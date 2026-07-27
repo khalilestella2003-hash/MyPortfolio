@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Khalil Carl Estella — BSIT Student, Aspiring Network Engineer. Portfolio showcasing AI/ML, networking, and software development." />
+  <title>Khalil Carl Estella | KAI.OS Portfolio</title>
+  <!-- Favicon — KAI.OS cyan icon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23020818'/%3E%3Ccircle cx='16' cy='16' r='11' fill='none' stroke='%2300f5ff' stroke-width='1.5' opacity='.4'/%3E%3Ccircle cx='16' cy='16' r='7' fill='none' stroke='%2300f5ff' stroke-width='1.5' opacity='.7'/%3E%3Ccircle cx='16' cy='16' r='3' fill='%2300f5ff'/%3E%3Cline x1='16' y1='2' x2='16' y2='8' stroke='%2300f5ff' stroke-width='1.5' stroke-linecap='round'/%3E%3Cline x1='16' y1='24' x2='16' y2='30' stroke='%2300f5ff' stroke-width='1.5' stroke-linecap='round'/%3E%3Cline x1='2' y1='16' x2='8' y2='16' stroke='%2300f5ff' stroke-width='1.5' stroke-linecap='round'/%3E%3Cline x1='24' y1='16' x2='30' y2='16' stroke='%2300f5ff' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E" />
+  <link rel="shortcut icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23020818'/%3E%3Ccircle cx='16' cy='16' r='11' fill='none' stroke='%2300f5ff' stroke-width='1.5' opacity='.4'/%3E%3Ccircle cx='16' cy='16' r='7' fill='none' stroke='%2300f5ff' stroke-width='1.5' opacity='.7'/%3E%3Ccircle cx='16' cy='16' r='3' fill='%2300f5ff'/%3E%3Cline x1='16' y1='2' x2='16' y2='8' stroke='%2300f5ff' stroke-width='1.5' stroke-linecap='round'/%3E%3Cline x1='16' y1='24' x2='16' y2='30' stroke='%2300f5ff' stroke-width='1.5' stroke-linecap='round'/%3E%3Cline x1='2' y1='16' x2='8' y2='16' stroke='%2300f5ff' stroke-width='1.5' stroke-linecap='round'/%3E%3Cline x1='24' y1='16' x2='30' y2='16' stroke='%2300f5ff' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/sections.css" />
+</head>
+<body>
+
+<!-- CUSTOM CURSOR -->
+<div id="cursor-dot"  aria-hidden="true"></div>
+<div id="cursor-ring" aria-hidden="true"></div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     LOGIN GATE — shown before anything else
+═══════════════════════════════════════════════════════════ -->
+<div id="login-gate" role="dialog" aria-modal="true" aria-labelledby="login-heading">
+
+  <!-- animated background particles (same canvas style as hero) -->
+  <canvas id="login-canvas" aria-hidden="true"></canvas>
+
+  <div class="login-box">
+
+    <!-- Logo -->
+    <div class="login-logo">KAI<span>.OS</span></div>
+    <p class="login-sub">SECURE ACCESS PORTAL</p>
+
+    <!-- Scan line decoration -->
+    <div class="login-scanline" aria-hidden="true"></div>
+
+    <!-- Heading -->
+    <h2 id="login-heading" class="login-heading">Authentication Required</h2>
+    <p class="login-hint">Enter credentials to access the portfolio</p>
+
+    <!-- Form -->
+    <form id="login-form" autocomplete="off" novalidate>
+
+      <div class="login-field">
+        <label for="login-user" class="login-label">Username</label>
+        <div class="login-input-wrap">
+          <span class="login-input-icon">◈</span>
+          <input
+            type="text"
+            id="login-user"
+            name="username"
+            class="login-input"
+            placeholder="Enter username"
+            autocomplete="off"
+            spellcheck="false"
+          />
+        </div>
+      </div>
+
+      <div class="login-field">
+        <label for="login-pass" class="login-label">Password</label>
+        <div class="login-input-wrap">
+          <span class="login-input-icon">◈</span>
+          <input
+            type="password"
+            id="login-pass"
+            name="password"
+            class="login-input"
+            placeholder="Enter password"
+            autocomplete="off"
+          />
+          <button
+            type="button"
+            id="toggle-pass"
+            class="login-eye"
+            aria-label="Toggle password visibility"
+            title="Show / hide password"
+          >
+            <!-- Eye open (password hidden) -->
+            <svg id="eye-open" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+              <circle cx="12" cy="12" r="3"/>
+            </svg>
+            <!-- Eye closed (password visible) -->
+            <svg id="eye-closed" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="display:none;">
+              <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94"/>
+              <path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"/>
+              <line x1="1" y1="1" x2="23" y2="23"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Error message -->
+      <p id="login-error" class="login-error" aria-live="polite"></p>
+
+      <button type="submit" class="login-btn" id="login-submit">
+        <span id="login-btn-text">ACCESS PORTFOLIO</span>
+        <span id="login-btn-loader" style="display:none;">AUTHENTICATING...</span>
+      </button>
+
+    </form>
+
+    <p class="login-footer-note">KAI.OS v2.4.1 · Private Portfolio</p>
+  </div>
+</div>
+
+<!-- LOADING SCREEN -->
+<div id="loading-screen" role="status" aria-live="polite">
+  <div class="boot-logo">KAI<span>.OS</span></div>
+  <div class="boot-lines" id="boot-lines"></div>
+  <div class="boot-bar-wrap"><div class="boot-bar-fill"></div></div>
+  <div class="boot-pct" id="boot-pct">0%</div>
+</div>
+
+<!-- NAVBAR -->
+<header>
+  <nav id="navbar" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo">KAI<span>.dev</span></a>
+      <ul class="nav-links" role="list">
+        <li><a href="#about"      class="nav-link">About</a></li>
+        <li><a href="#stack"      class="nav-link">Stack</a></li>
+        <li><a href="#projects"   class="nav-link">Projects</a></li>
+        <li><a href="#ai"         class="nav-link">AI/ML</a></li>
+        <li><a href="#networking" class="nav-link">Network</a></li>
+        <li><a href="#skills"     class="nav-link">Skills</a></li>
+        <li><a href="#journey"    class="nav-link">Journey</a></li>
+        <li><a href="#contact"    class="nav-link">Contact</a></li>
+      </ul>
+      <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle mobile menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <button id="logout-btn" class="nav-logout" title="Logout">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+          <polyline points="16 17 21 12 16 7"/>
+          <line x1="21" y1="12" x2="9" y2="12"/>
+        </svg>
+        <span>Logout</span>
+      </button>
+    </div>
+  </nav>
+  <nav id="nav-mobile" aria-label="Mobile navigation" style="display:none;">
+    <a href="#about">About</a>
+    <a href="#stack">Stack</a>
+    <a href="#projects">Projects</a>
+    <a href="#ai">AI/ML</a>
+    <a href="#networking">Network</a>
+    <a href="#skills">Skills</a>
+    <a href="#journey">Journey</a>
+    <a href="#contact">Contact</a>
+    <button id="logout-btn-mobile" class="nav-logout-mobile">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+        <polyline points="16 17 21 12 16 7"/>
+        <line x1="21" y1="12" x2="9" y2="12"/>
+      </svg>
+      Logout
+    </button>
+  </nav>
+</header>
+
+<main>
+
+<!-- ═══════════════════════════════════════════════════════════
+     01 · HERO
+═══════════════════════════════════════════════════════════ -->
+<section id="hero" aria-labelledby="hero-title">
+  <canvas id="hero-canvas" aria-hidden="true"></canvas>
+  <div class="hero-inner">
+    <div class="hero-content">
+      <p class="hero-eyebrow">BSIT Student — Aspiring IT Professional</p>
+      <h1 id="hero-title" class="hero-name">
+        Khalil Carl<br><span class="hero-name-accent">Estella</span>
+      </h1>
+      <p class="hero-subtitle" id="typed-text" aria-live="polite"></p>
+      <p class="hero-bio">
+        I'm Kai — a passionate BSIT student building at the intersection of
+        networking, AI, and software development. I design systems that think,
+        connect, and scale.
+      </p>
+      <div class="hero-cta">
+        <a href="#projects" class="btn btn-primary" data-magnetic>
+          Explore My Work
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+            <path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </a>
+        <a href="#contact" class="btn btn-outline" data-magnetic>Connect With Me</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <span class="hero-stat-num" data-count="4" data-suffix="+">4+</span>
+          <span class="hero-stat-label">Languages</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-num" data-count="12" data-suffix="+">12+</span>
+          <span class="hero-stat-label">Technologies</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-num" data-count="1" data-suffix=" App">1 App</span>
+          <span class="hero-stat-label">AI Capstone</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual" aria-hidden="true">
+      <div class="morphing-core-wrap">
+        <div class="morphing-core-ring"></div>
+        <div class="morphing-core-ring-2"></div>
+        <div class="morphing-core"></div>
+        <div class="core-icon" title="Networking">🌐</div>
+        <div class="core-icon" title="AI / ML">🤖</div>
+        <div class="core-icon" title="Security">🔒</div>
+        <div class="core-icon" title="Code">⚡</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     02 · ABOUT
+═══════════════════════════════════════════════════════════ -->
+<section id="about" class="section" aria-labelledby="about-title">
+  <div class="bg-grid" aria-hidden="true"></div>
+  <div class="glow-orb glow-orb-cyan" style="width:500px;height:500px;top:-100px;left:-150px;opacity:.5" aria-hidden="true"></div>
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-label">01 — About</span>
+      <h2 id="about-title" class="section-title">Who Is Kai?</h2>
+      <p class="section-subtitle">A technology enthusiast turning curiosity into capability</p>
+    </div>
+    <div class="about-grid">
+      <div class="about-avatar-wrap reveal-left">
+        <div class="avatar-frame">
+          <div class="avatar-inner">KCE</div>
+        </div>
+        <div class="about-chips stagger">
+          <span class="chip">🎓 BSIT</span>
+          <span class="chip">🌐 Network Eng.</span>
+          <span class="chip">🤖 AI/ML</span>
+          <span class="chip">🔒 Cybersecurity</span>
+          <span class="chip">🎸 Guitar</span>
+          <span class="chip">🎮 Mobile Legends</span>
+        </div>
+      </div>
+      <div class="about-text reveal-right">
+        <h3>Khalil Carl Estella</h3>
+        <p class="nickname">@kai · BSIT Student · Aspiring Network Engineer</p>
+        <p>
+          I'm a Bachelor of Science in Information Technology student with a
+          deep passion for how technology connects the world. My academic journey
+          has taken me through programming, Android development, AI and machine
+          learning, and networking infrastructure — building real-world systems along the way.
+        </p>
+        <p>
+          My capstone project, <strong style="color:var(--clr-cyan)">PICHI</strong>,
+          is an offline Android app that classifies chili plant pests using a CNN —
+          combining computer vision, TensorFlow Lite, and mobile development into one
+          practical tool for farmers.
+        </p>
+        <p>
+          Beyond code, I explore how networks are designed, how cybersecurity defends
+          critical infrastructure, and how AI automates complex decisions.
+          I play guitar and Mobile Legends to unwind.
+        </p>
+        <div class="about-interests stagger">
+          <span class="tag tag-cyan">Networking</span>
+          <span class="tag tag-blue">Cybersecurity</span>
+          <span class="tag tag-purple">Artificial Intelligence</span>
+          <span class="tag tag-green">Machine Learning</span>
+          <span class="tag tag-cyan">Android Dev</span>
+          <span class="tag tag-blue">IT Infrastructure</span>
+          <span class="tag tag-purple">Software Dev</span>
+          <span class="tag tag-green">Computer Vision</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     03 · TECH STACK
+═══════════════════════════════════════════════════════════ -->
+<section id="stack" class="section" aria-labelledby="stack-title">
+  <div class="glow-orb glow-orb-purple" style="width:600px;height:600px;top:-100px;right:-200px;opacity:.4" aria-hidden="true"></div>
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-label">02 — Tech Stack</span>
+      <h2 id="stack-title" class="section-title">Tools &amp; Technologies</h2>
+      <p class="section-subtitle">The technologies I work with day to day</p>
+    </div>
+    <div class="tech-grid stagger reveal">
+      <div class="tech-card" data-tilt data-tip="Java"><div class="tech-icon">☕</div><span class="tech-name">Java</span></div>
+      <div class="tech-card" data-tilt data-tip="Python"><div class="tech-icon">🐍</div><span class="tech-name">Python</span></div>
+      <div class="tech-card" data-tilt data-tip="HTML5"><div class="tech-icon">🌐</div><span class="tech-name">HTML5</span></div>
+      <div class="tech-card" data-tilt data-tip="CSS3"><div class="tech-icon">🎨</div><span class="tech-name">CSS3</span></div>
+      <div class="tech-card" data-tilt data-tip="JavaScript"><div class="tech-icon">⚡</div><span class="tech-name">JavaScript</span></div>
+      <div class="tech-card" data-tilt data-tip="PHP"><div class="tech-icon">🐘</div><span class="tech-name">PHP</span></div>
+      <div class="tech-card" data-tilt data-tip="MySQL"><div class="tech-icon">🗄️</div><span class="tech-name">MySQL</span></div>
+      <div class="tech-card" data-tilt data-tip="TensorFlow"><div class="tech-icon">🧠</div><span class="tech-name">TensorFlow</span></div>
+      <div class="tech-card" data-tilt data-tip="TF Lite"><div class="tech-icon">📱</div><span class="tech-name">TF Lite</span></div>
+      <div class="tech-card" data-tilt data-tip="Android Studio"><div class="tech-icon">🤖</div><span class="tech-name">Android Studio</span></div>
+      <div class="tech-card" data-tilt data-tip="Google Colab"><div class="tech-icon">🔬</div><span class="tech-name">Google Colab</span></div>
+      <div class="tech-card" data-tilt data-tip="Git / GitHub"><div class="tech-icon">🔀</div><span class="tech-name">Git / GitHub</span></div>
+      <div class="tech-card" data-tilt data-tip="Kotlin"><div class="tech-icon">🟣</div><span class="tech-name">Kotlin</span></div>
+      <div class="tech-card" data-tilt data-tip="Computer Vision"><div class="tech-icon">👁️</div><span class="tech-name">Computer Vision</span></div>
+      <div class="tech-card" data-tilt data-tip="Networking"><div class="tech-icon">📡</div><span class="tech-name">Networking</span></div>
+      <div class="tech-card" data-tilt data-tip="Linux CLI"><div class="tech-icon">🐧</div><span class="tech-name">Linux CLI</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     04 · FEATURED PROJECT — PICHI
+═══════════════════════════════════════════════════════════ -->
+<section id="projects" class="section" aria-labelledby="projects-title">
+  <div class="bg-grid" aria-hidden="true"></div>
+  <div class="glow-orb glow-orb-cyan" style="width:700px;height:700px;bottom:-200px;left:-200px;opacity:.35" aria-hidden="true"></div>
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-label">03 — Featured Project</span>
+      <h2 id="projects-title" class="section-title">PICHI App</h2>
+      <p class="section-subtitle">Capstone project — AI-powered chili pest classification</p>
+    </div>
+
+    <div class="project-feature glass-card reveal" style="padding:2.5rem 3rem;" data-tilt>
+
+      <!-- Header row -->
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:2rem;">
+        <div>
+          <span class="project-badge">★ Capstone Project</span>
+          <h3 class="project-title" style="margin-top:.5rem;">PICHI</h3>
+          <p style="color:var(--clr-cyan);font-family:var(--font-mono);font-size:.82rem;">
+            Pest Classification for Chili using Heuristic Intelligence
+          </p>
+        </div>
+        <span class="btn btn-outline" style="cursor:default;opacity:.6;font-size:.72rem;padding:.5em 1.2em;align-self:flex-start;">
+          🔒 Private Repo
+        </span>
+      </div>
+
+      <!-- Description -->
+      <p class="project-desc">
+        An offline Android application that uses a Convolutional Neural Network and
+        TensorFlow Lite to classify chili plant pests directly from camera or gallery images.
+        It provides farmers with pest classification results, possible causes, and recommended
+        intervention strategies — entirely without an internet connection.
+      </p>
+
+      <!-- 4 classification categories -->
+      <div class="project-cats" style="margin-bottom:2rem;">
+        <div class="project-cat"><span class="project-cat-icon">🐛</span>Aphids</div>
+        <div class="project-cat"><span class="project-cat-icon">🔬</span>Broadmites</div>
+        <div class="project-cat"><span class="project-cat-icon">✅</span>Healthy</div>
+        <div class="project-cat"><span class="project-cat-icon">🕷️</span>Spidermites</div>
+      </div>
+
+      <!-- Feature highlights row -->
+      <div class="pichi-features">
+        <div class="pichi-feature">
+          <span class="pichi-feature-icon">📷</span>
+          <div>
+            <h4>Image Capture</h4>
+            <p>Camera or gallery input for instant leaf scanning</p>
+          </div>
+        </div>
+        <div class="pichi-feature">
+          <span class="pichi-feature-icon">🧠</span>
+          <div>
+            <h4>AI Classification</h4>
+            <p>CNN model runs on-device with TensorFlow Lite</p>
+          </div>
+        </div>
+        <div class="pichi-feature">
+          <span class="pichi-feature-icon">💡</span>
+          <div>
+            <h4>Intervention Tips</h4>
+            <p>Actionable pest cause and treatment recommendations</p>
+          </div>
+        </div>
+        <div class="pichi-feature">
+          <span class="pichi-feature-icon">📴</span>
+          <div>
+            <h4>Fully Offline</h4>
+            <p>No internet needed — works anywhere in the field</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tech tags -->
+      <div class="project-tags" style="margin-top:2rem;margin-bottom:0;">
+        <span class="tag tag-cyan">Android Studio</span>
+        <span class="tag tag-blue">Java / Kotlin</span>
+        <span class="tag tag-purple">TensorFlow</span>
+        <span class="tag tag-green">TF Lite</span>
+        <span class="tag tag-cyan">CNN</span>
+        <span class="tag tag-blue">Python</span>
+        <span class="tag tag-purple">Google Colab</span>
+        <span class="tag tag-green">Computer Vision</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     05 · AI / MACHINE LEARNING
+═══════════════════════════════════════════════════════════ -->
+<section id="ai" class="section" aria-labelledby="ai-title">
+  <div class="bg-grid" aria-hidden="true"></div>
+  <div class="glow-orb glow-orb-blue" style="width:600px;height:600px;top:-100px;right:-150px;opacity:.45" aria-hidden="true"></div>
+  <div class="container">
+
+    <div class="section-header reveal">
+      <span class="section-label">04 — AI / Machine Learning</span>
+      <h2 id="ai-title" class="section-title">Intelligent Systems</h2>
+      <p class="section-subtitle">Building models that see, learn, and decide</p>
+    </div>
+
+    <!-- Top: description + pills -->
+    <div class="ai-intro reveal">
+      <p>
+        My AI journey began with computer vision and TensorFlow. I built a Convolutional
+        Neural Network that classifies pest-infected chili plants, trained in Google Colab
+        with Python and deployed offline on Android using TensorFlow Lite — covering the
+        complete ML lifecycle from data preparation to edge inference.
+      </p>
+      <div class="ai-tech-pills">
+        <span class="chip">🧠 CNN</span>
+        <span class="chip">📸 Computer Vision</span>
+        <span class="chip">🐍 TensorFlow</span>
+        <span class="chip">📱 TF Lite</span>
+        <span class="chip">📊 Data Augmentation</span>
+        <span class="chip">🔬 Google Colab</span>
+        <span class="chip">🐍 Python</span>
+        <span class="chip">📐 Image Preprocessing</span>
+      </div>
+    </div>
+
+    <!-- Middle: 3 highlight cards -->
+    <div class="ai-cards reveal stagger">
+      <div class="ai-card glass-card">
+        <div class="ai-card-icon">🤖</div>
+        <h4 class="ai-card-title">Model Training</h4>
+        <p class="ai-card-desc">
+          Built and trained CNN models with custom image datasets using data
+          augmentation to improve generalisation and reduce overfitting.
+        </p>
+        <div class="ai-card-tags">
+          <span class="tag tag-cyan">TensorFlow</span>
+          <span class="tag tag-blue">Python</span>
+          <span class="tag tag-purple">Google Colab</span>
+        </div>
+      </div>
+      <div class="ai-card glass-card">
+        <div class="ai-card-icon">⚡</div>
+        <h4 class="ai-card-title">Edge Deployment</h4>
+        <p class="ai-card-desc">
+          Converted and quantised models to TensorFlow Lite format for
+          offline inference on Android — no internet connection required.
+        </p>
+        <div class="ai-card-tags">
+          <span class="tag tag-cyan">TF Lite</span>
+          <span class="tag tag-blue">Android</span>
+          <span class="tag tag-green">Offline AI</span>
+        </div>
+      </div>
+      <div class="ai-card glass-card">
+        <div class="ai-card-icon">👁️</div>
+        <h4 class="ai-card-title">Computer Vision</h4>
+        <p class="ai-card-desc">
+          Image preprocessing pipelines, classification inference, and
+          real-time predictions from camera or gallery input on mobile.
+        </p>
+        <div class="ai-card-tags">
+          <span class="tag tag-cyan">Computer Vision</span>
+          <span class="tag tag-purple">CNN</span>
+          <span class="tag tag-green">Image Classification</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom: Neural canvas panel -->
+    <div class="ai-canvas-panel glass-card reveal">
+      <div class="ai-canvas-header">
+        <div class="ai-canvas-status">
+          <span class="ai-status-dot"></span>
+          <span>Neural Network — Live Signal Propagation</span>
+        </div>
+        <div class="ai-canvas-meta">
+          <span class="tag tag-cyan">Layers: 5</span>
+          <span class="tag tag-blue">Nodes: 22</span>
+          <span class="tag tag-purple">Type: Feedforward CNN</span>
+        </div>
+      </div>
+      <canvas id="neural-canvas" aria-label="Neural network visualization"></canvas>
+      <div class="ai-canvas-footer">
+        <div class="ai-canvas-stat">
+          <span class="ai-canvas-stat-num">4</span>
+          <span class="ai-canvas-stat-label">Output Classes</span>
+        </div>
+        <div class="ai-canvas-stat">
+          <span class="ai-canvas-stat-num">CNN</span>
+          <span class="ai-canvas-stat-label">Architecture</span>
+        </div>
+        <div class="ai-canvas-stat">
+          <span class="ai-canvas-stat-num">TF Lite</span>
+          <span class="ai-canvas-stat-label">Runtime</span>
+        </div>
+        <div class="ai-canvas-stat">
+          <span class="ai-canvas-stat-num">Offline</span>
+          <span class="ai-canvas-stat-label">Deployment</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     06 · NETWORKING & CYBERSECURITY
+═══════════════════════════════════════════════════════════ -->
+<section id="networking" class="section" aria-labelledby="net-title">
+  <div class="glow-orb glow-orb-green" style="width:500px;height:500px;bottom:-100px;left:-100px;opacity:.4" aria-hidden="true"></div>
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-label">05 — Networking &amp; Cybersecurity</span>
+      <h2 id="net-title" class="section-title">Network Operations</h2>
+      <p class="section-subtitle">My career path towards becoming a Network Engineer</p>
+    </div>
+    <div class="net-grid">
+      <div class="reveal-left">
+        <canvas id="network-canvas" width="600" height="340" aria-label="Interactive network topology"></canvas>
+        <p style="font-family:var(--font-mono);font-size:.7rem;color:var(--clr-text-dim);margin-top:.75rem;text-align:center;">
+          ▸ Hover nodes to inspect — live packet simulation
+        </p>
+        <div class="net-stats">
+          <div class="net-stat-card"><span class="num" data-count="7" data-suffix="">7</span><span class="lbl">Network Nodes</span></div>
+          <div class="net-stat-card"><span class="num" data-count="3" data-suffix=" Layers">3 Layers</span><span class="lbl">Topology Depth</span></div>
+          <div class="net-stat-card"><span class="num" style="font-size:1rem;padding-top:.25rem;">OSI</span><span class="lbl">Model Focus</span></div>
+          <div class="net-stat-card"><span class="num" style="font-size:1rem;padding-top:.25rem;">TCP/IP</span><span class="lbl">Protocol Stack</span></div>
+        </div>
+      </div>
+      <div class="reveal-right">
+        <p style="color:var(--clr-text-muted);line-height:1.75;margin-bottom:2rem;">
+          My primary career goal is to become a Network Engineer. I am studying enterprise
+          network design, protocol configuration, and cybersecurity hardening — from
+          physical topology to threat mitigation strategies.
+        </p>
+        <div class="interest-cards stagger">
+          <div class="interest-card"><span class="interest-card-icon">🏗️</span><span class="interest-card-label">Network Infrastructure Design</span></div>
+          <div class="interest-card"><span class="interest-card-icon">🔒</span><span class="interest-card-label">Cybersecurity &amp; Threat Analysis</span></div>
+          <div class="interest-card"><span class="interest-card-icon">📡</span><span class="interest-card-label">Routing &amp; Switching Protocols</span></div>
+          <div class="interest-card"><span class="interest-card-icon">🖥️</span><span class="interest-card-label">Server &amp; IT Infrastructure</span></div>
+          <div class="interest-card"><span class="interest-card-icon">🔥</span><span class="interest-card-label">Firewalls &amp; Access Control</span></div>
+          <div class="interest-card"><span class="interest-card-icon">☁️</span><span class="interest-card-label">Cloud &amp; Virtualization</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     07 · SKILLS
+═══════════════════════════════════════════════════════════ -->
+<section id="skills" class="section" aria-labelledby="skills-title">
+  <div class="bg-grid" aria-hidden="true"></div>
+  <div class="glow-orb glow-orb-purple" style="width:500px;height:500px;top:-100px;right:-100px;opacity:.35" aria-hidden="true"></div>
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-label">06 — Skills &amp; Expertise</span>
+      <h2 id="skills-title" class="section-title">Technical Proficiency</h2>
+      <p class="section-subtitle">Honest assessment of my current skill levels</p>
+    </div>
+    <div class="skills-grid stagger reveal">
+      <div class="skill-category">
+        <div class="skill-cat-header"><span class="skill-cat-icon">⚙️</span><span class="skill-cat-title">Programming</span></div>
+        <div class="skill-item"><div class="skill-meta"><span class="skill-name">Java</span><span class="skill-level">Proficient</span></div><div class="progress-track"><div class="progress-fill" data-width="78%"></div></div></div>
+        <div class="skill-item"><div class="skill-meta"><span class="skill-name">Python</span><span class="skill-level">Intermediate</span></div><div class="progress-track"><div class="progress-fill" data-width="65%"></div></div></div>
+        <div class="skill-item"><div class="skill-meta"><span class="skill-name">JavaScript</span><span class="skill-level">Intermediate</span></div><div class="progress-track"><div class="progress-fill" data-width="60%"></div></div></div>
+        <div class="skill-item"><div class="skill-meta"><span class="skill-name">Kotlin</span><span class="skill-level">Learning</span></div><div class="progress-track"><div class="progress-fill" data-width="45%"></div></div></div>
+        <div class="skill-item"><div class="skill-meta"><span class="skill-name">PHP</span><span class="skill-level">Intermediate</span></div><div class="progress-track"><div class="progress-fill" data-width="55%"></div></div></div>
+      </div>
+      <div class="skill-category">
+        <div class="skill-cat-header"><span class="skill-cat-icon">🧠</span><span class="skill-cat-title">AI / Machine Learning</span></div>
+        <div class="skill-item"><div class="skill-meta"><span class="skill-name">TensorFlow</span><span class="skill-level">Intermediate</span></div><div class="progress-track"><div class="progress-fill" data-width="62%"></div></div></div>
+        <div class="skill-item"><div class="skill-meta"><span class="skill-name">TensorFlow Lite</span><span class="skill-level">Proficient</span></div><div class="progress-track"><div class="progress-fill" data-width="70%"></div></div></div>
+        <div class="skill-item"><div class="skill-meta"><span class="skill-name">CNN / Deep Learning</span><span class="skill-level">Intermediate</span></div><div class="progress-track"><div class="progress-fill" data-width="60%"></div></div></div>
+        <div class="skill-item"><div class="skill-meta"><span class="skill-name">Computer Vision</span><span class="skill-level">Intermediate</span></div><div class="progress-track"><div class="progress-fill" data-width="58%"></div></div></div>
+        <div class="skill-item"><div class="skill-meta"><span class="skill-name">Google Colab</span><span class="skill-level">Comfortable</span></div><div class="progress-track"><div class="progress-fill" data-width="72%"></div></div></div>
+      </div>
+      <div class="skill-category">
+        <div class="skill-cat-header"><span class="skill-cat-icon">📱</span><span class="skill-cat-title">Mobile &amp; Web</span></div>
+        <div class="skill-item"><div class="skill-meta"><span class="skill-name">Android Development</span><span class="skill-level">Proficient</span></div><div class="progress-track"><div class="progress-fill" data-width="75%"></div></div></div>
+        <div class="skill-item"><div class="skill-meta"><span class="skill-name">HTML / CSS</span><span class="skill-level">Comfortable</span></div><div class="progress-track"><div class="progress-fill" data-width="68%"></div></div></div>
+        <div class="skill-item"><div class="skill-meta"><span class="skill-name">MySQL / Database</span><span class="skill-level">Intermediate</span></div><div class="progress-track"><div class="progress-fill" data-width="62%"></div></div></div>
+        <div class="skill-item"><div class="skill-meta"><span class="skill-name">Git / GitHub</span><span class="skill-level">Comfortable</span></div><div class="progress-track"><div class="progress-fill" data-width="65%"></div></div></div>
+        <div class="skill-item"><div class="skill-meta"><span class="skill-name">Networking (Theory)</span><span class="skill-level">Learning</span></div><div class="progress-track"><div class="progress-fill" data-width="50%"></div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     08 · JOURNEY TIMELINE
+═══════════════════════════════════════════════════════════ -->
+<section id="journey" class="section" aria-labelledby="journey-title">
+  <div class="glow-orb glow-orb-cyan" style="width:600px;height:600px;top:-150px;right:-200px;opacity:.35" aria-hidden="true"></div>
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-label">07 — My Journey</span>
+      <h2 id="journey-title" class="section-title">Growth Timeline</h2>
+      <p class="section-subtitle">From first lines of code to building intelligent systems</p>
+    </div>
+    <div style="max-width:800px;margin-inline:auto;">
+      <div class="timeline reveal">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <p class="timeline-period">Early Stage</p>
+          <h3 class="timeline-title">First Steps into Programming</h3>
+          <p class="timeline-desc">Started with Java fundamentals — OOP, algorithms, and building basic console applications.</p>
+          <div class="timeline-tags"><span class="tag tag-cyan">Java</span><span class="tag tag-blue">OOP</span><span class="tag tag-purple">Algorithms</span></div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot" style="border-color:var(--clr-blue);box-shadow:var(--glow-blue)"></div>
+          <p class="timeline-period">BSIT Program</p>
+          <h3 class="timeline-title">Web &amp; Database Development</h3>
+          <p class="timeline-desc">Expanded into full-stack web development with HTML, CSS, JS, PHP, and MySQL. Learned Git and software engineering principles.</p>
+          <div class="timeline-tags"><span class="tag tag-cyan">HTML/CSS/JS</span><span class="tag tag-blue">PHP</span><span class="tag tag-purple">MySQL</span><span class="tag tag-green">Git</span></div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot" style="border-color:var(--clr-purple);box-shadow:var(--glow-purple)"></div>
+          <p class="timeline-period">Mobile Development</p>
+          <h3 class="timeline-title">Android App Development</h3>
+          <p class="timeline-desc">Built native Android apps with Java and Kotlin using Android Studio. Learned lifecycle management, mobile UI patterns, and Android APIs.</p>
+          <div class="timeline-tags"><span class="tag tag-cyan">Android Studio</span><span class="tag tag-blue">Java</span><span class="tag tag-purple">Kotlin</span></div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot" style="border-color:var(--clr-green);box-shadow:var(--glow-green)"></div>
+          <p class="timeline-period">AI/ML Research</p>
+          <h3 class="timeline-title">Machine Learning &amp; Computer Vision</h3>
+          <p class="timeline-desc">Trained CNN models in Google Colab with Python. Applied data augmentation and built my first functional AI model for image classification.</p>
+          <div class="timeline-tags"><span class="tag tag-cyan">TensorFlow</span><span class="tag tag-blue">Python</span><span class="tag tag-purple">CNN</span><span class="tag tag-green">Computer Vision</span></div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot" style="border-color:var(--clr-cyan);box-shadow:var(--glow-cyan);"></div>
+          <p class="timeline-period">Capstone — Current</p>
+          <h3 class="timeline-title">PICHI App — AI Capstone Project</h3>
+          <p class="timeline-desc">Designed and built PICHI — an offline Android app with a TF Lite CNN for real-time chili pest classification, providing farmers with actionable recommendations.</p>
+          <div class="timeline-tags"><span class="tag tag-cyan">TF Lite</span><span class="tag tag-blue">Android</span><span class="tag tag-purple">CNN</span><span class="tag tag-green">Edge AI</span></div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot" style="border-color:var(--clr-blue-bright);box-shadow:var(--glow-blue);opacity:.5;"></div>
+          <p class="timeline-period">Next Goal</p>
+          <h3 class="timeline-title" style="color:var(--clr-text-muted);">Network Engineering &amp; Certifications</h3>
+          <p class="timeline-desc">Working towards deep networking expertise — routing, switching, network security, and infrastructure design, targeting industry certifications.</p>
+          <div class="timeline-tags"><span class="tag tag-cyan">Networking</span><span class="tag tag-blue">Cybersecurity</span><span class="tag tag-purple">Infrastructure</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     09 · CONTACT
+═══════════════════════════════════════════════════════════ -->
+<section id="contact" class="section" aria-labelledby="contact-title">
+  <div class="glow-orb glow-orb-purple" style="width:700px;height:700px;bottom:-200px;right:-250px;opacity:.35" aria-hidden="true"></div>
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-label">08 — Contact</span>
+      <h2 id="contact-title" class="section-title">Let's Connect</h2>
+      <p class="section-subtitle">Open for opportunities, collaborations, and conversations</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info reveal-left">
+        <h3>Get In Touch</h3>
+        <p>I'm currently looking for internship and junior network engineering roles. If you're building something interesting or want to discuss technology, feel free to reach out.</p>
+        <div class="contact-links">
+          <a href="mailto:khalil.estella@example.com" class="contact-link">
+            <span class="contact-link-icon">📧</span><span>khalil.estella@example.com</span>
+          </a>
+          <a href="https://github.com" target="_blank" rel="noopener" class="contact-link">
+            <span class="contact-link-icon">💻</span><span>github.com/khalilestella</span>
+          </a>
+          <a href="https://linkedin.com" target="_blank" rel="noopener" class="contact-link">
+            <span class="contact-link-icon">🔗</span><span>linkedin.com/in/khalilestella</span>
+          </a>
+          <a href="#" class="contact-link" style="pointer-events:none;opacity:.5;">
+            <span class="contact-link-icon">📍</span><span>Philippines</span>
+          </a>
+        </div>
+      </div>
+      <div class="reveal-right">
+        <form id="contact-form" class="contact-form" aria-label="Contact form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name" class="form-label">Your Name</label>
+              <input type="text" id="name" name="name" class="form-input" placeholder="John Doe" required />
+            </div>
+            <div class="form-group">
+              <label for="email" class="form-label">Your Email</label>
+              <input type="email" id="email" name="email" class="form-input" placeholder="you@example.com" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="subject" class="form-label">Subject</label>
+            <input type="text" id="subject" name="subject" class="form-input" placeholder="Opportunity / Collaboration / Question" required />
+          </div>
+          <div class="form-group">
+            <label for="message" class="form-label">Message</label>
+            <textarea id="message" name="message" class="form-textarea" placeholder="Tell me about your idea, opportunity, or question..." required></textarea>
+          </div>
+          <button type="submit" class="btn btn-purple form-submit" data-magnetic>Send Message</button>
+          <p class="form-note">&gt; Note: This is a static portfolio. Connect via email or social links above.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">KAI<span>.dev</span></div>
+    <p class="footer-tagline">Building systems that think, connect, and scale.</p>
+    <ul class="footer-links" role="list">
+      <li><a href="#about">About</a></li>
+      <li><a href="#stack">Stack</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <p class="footer-tagline" style="margin-top:1rem;font-size:.65rem;">© 2025 Khalil Carl Estella. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="js/bundle.js"></script>
+</body>
+</html>
